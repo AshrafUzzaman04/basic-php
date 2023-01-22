@@ -1,0 +1,70 @@
+/* Create table query MySQL */
+
+CREATE TABLE `admins` (
+    `id` INT(20) PRIMARY KEY AUTO_INCREMENT ,  
+    `name` CHAR(100) NOT NULL,
+    `email` CHAR(255),
+    `password`INT(255),
+    `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+)
+
+
+
+/* insert the value in query */
+
+INSERT INTO `admins` (`name`,`email`,`password`) 
+VALUES 
+    ('Ashraf','ashrafuzmahim@gmail.com','iloveallah'),
+    ('Tanha','tanha@gmail.com','iloveashraf'),
+    ('Jannat','jannat@gmail.com','ilovemydady')
+
+
+
+/* All data will go to PHP and search data*/
+
+SELECT * FROM `admins` WHERE `id` = 2
+SELECT * FROM `students` WHERE  `Name` = 'Md Ashraf Uz Mahim'
+SELECT * FROM `admins` WHERE `email` = 'ashrafuzmahim@gmail.com' AND `password` = 'hellow'  //multiple select//
+
+
+
+/* update the data */
+
+UPDATE `admins` set `password` = 'hahahaha' WHERE id = 2
+UPDATE `admins` SET `name` = 'Fatema' , `password` = 'okh' WHERE `id` = 3  //multiple updates//
+
+
+/* delete data from query */
+
+DELETE FROM `admins` WHERE `id` = 3
+
+
+/*add query structure*/
+
+ALTER TABLE table_name
+ADD column_name datatype;
+
+
+/*delete one column*/
+
+ALTER TABLE Customers
+DROP COLUMN ContactName;
+
+
+
+/* search the data from query */
+
+SELECT * FROM `students` WHERE `Name` LIKE '%johora%'
+
+
+
+/*Connect php to database MySQL*/
+
+mysqli_connect("localhost","root","","file_name")
+
+
+
+/*delete a table*/
+
+DROP TABLE table_name;
+
