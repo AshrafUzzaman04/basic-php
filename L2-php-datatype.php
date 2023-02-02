@@ -53,7 +53,7 @@ var_dump($var);
 define("myName" , "Ashraf Uz Mahim");
 echo "<br>". myName . "<br>";
 
-// প্যাচ
+// প্যাচ ***********************************************
 $a = "abul";
 $abul = "male";
 $male ="bad";
