@@ -27,7 +27,6 @@ echo "<hr>";
 
 echo strlen("My name is Ashraf Uz Mahim.") . "<br>";                        //   Returns the length of a string
 echo str_word_count("My name is Ashraf Uz Mahim.") . "<br>";                // Count the number of words in a string
-
 echo strrev("My name is Ashraf Uz Mahim.") . "<br>";                        //   	Reverses a string
 echo substr("My name is Ashraf Uz Mahim.", 11 , 27 ) . "<br>";              //   Returns a part of a string
 echo strcoll("My name is Ashraf", "My name is Ashraf Uz Mahim."). "<br>";              //  Compares two strings 

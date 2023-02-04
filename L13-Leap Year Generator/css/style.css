@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  background: linear-gradient(-45deg, rgb(4, 1, 1) 0%, rgb(56, 15, 32) 100%);
+  background-size: 300% 300%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+  padding: 10px;
+  min-height: 100vh;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+}
+
+.container > main {
+  background: linear-gradient(315deg, rgba(17, 3, 3, 0.8) 0%, rgba(182, 43, 98, 0.8) 100%);
+  border-radius: 1.88rem 7.5rem 1.88rem 1.88rem;
+  font-family: "Overpass", sans-serif;
+  padding: 2rem;
+  color: white;
+  max-width: 400px;
+}
+.container > main > img {
+  padding: 1.06rem;
+  border-radius: 1.88rem;
+  margin-bottom: 1.55rem;
+  background: rgb(80, 12, 39);
+  box-shadow: 0 0 0.94rem 0.19rem rgba(0, 0, 0, 0.2);
+}
+.container > main > h2 {
+  font-weight: 700;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+.container > main > p {
+  opacity: 0.7;
+  font-size: 15px;
+  margin-bottom: 2rem;
+}
+.container > main > p > a {
+  text-decoration: none;
+  opacity: 1;
+  color: #ff688b;
+}
+.container > main > .error_msg {
+  color: rgba(255, 125, 125, 0.5607843137);
+}
+.container > main > .success_msg {
+  color: rgba(0, 255, 0, 0.5098039216);
+}
+.container > main > form > input {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: small;
+  border: none;
+  background-color: rgba(239, 71, 110, 0.2588235294);
+  font-weight: bold;
+  text-align: center;
+  -moz-appearance: textfield;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.4s ease-in-out;
+}
+.container > main > form > input:focus {
+  background-color: transparent;
+  background-color: rgba(239, 71, 110, 0.2588235294);
+  color: #e8e8e8;
+  border: transparent;
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5215686275);
+}
+.container > main > form input::-webkit-outer-spin-button,
+.container > main > form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container > main > form > .button {
+  margin-top: 1.2em;
+  background: transparent;
+  -webkit-animation: jello-horizontal 0.9s both;
+  animation: jello-horizontal 0.9s both;
+  border: 1px solid rgba(239, 71, 110, 0.6862745098);
+  outline: none;
+  color: #ef476f;
+  font-size: 17px;
+  padding: 6px;
+}
+.container > main > form > .button:hover {
+  background: #a61750;
+  border: 2px solid #a61750;
+  color: #ffffff;
+  -webkit-animation: squeeze3124 0.9s both;
+          animation: squeeze3124 0.9s both;
+}
+@-webkit-keyframes squeeze3124 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes squeeze3124 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}/*# sourceMappingURL=style.css.map */
