@@ -3,10 +3,27 @@
 // indexed array
 $cities = array("Dhaka","Khulna","barishal","Rangpur");
 $country =["bangladesh","India", "pakisthan","Bhutan","Japan"];
+$yousuf = ["Md. Yousuf Ali" , "unmarried", 45 , 58];
 
 echo "<pre>";
 print_r($cities);
 echo "</pre>";
+
+array_push($yousuf, "dushtu lok");                            // push array in last index
+array_pop($yousuf);                                           // Rremove array value in last index
+array_unshift($yousuf, "hellow", "hi");                       // add in array [0] index
+array_shift($yousuf);                                         // remove in array [0] index
+array_search("unmarried", $yousuf);                            // find the array indexed number
+print_r($yousuf);
+
+echo "<hr>";
+echo "<h1>Loop the array data</h1>";
+// for loop ***********************
+for ($i=0; $i < count($yousuf); $i++) { 
+    echo $yousuf[$i] . "<br>";
+}
+
+echo "<hr>";
 
 echo implode("<br>" , $country) . "<br>";
 
@@ -14,7 +31,7 @@ echo "<br>" . $country[2] . "<br>";                             // call the arra
 echo count($country);                                           // count
 
 // Count the array recursively:
-$cars= array( "Volvo"=>array("XC60","XC90"),"BMW"=>array("X3","X5"),"Toyota"=>array("Highlander") ); 
+$cars= array("Volvo"=>array("XC60","XC90"),"BMW"=>array("X3","X5"),"Toyota"=>array("Highlander")); 
 echo "Normal count: " . count($cars)."<br>";
 echo "Recursive count: " . count($cars,1);
 

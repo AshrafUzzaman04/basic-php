@@ -9,8 +9,7 @@ body {
   place-content: center;
   background: linear-gradient(-45deg, rgb(4, 1, 1) 0%, rgb(56, 15, 32) 100%);
   background-size: 300% 300%;
-  -webkit-animation: gradient 15s ease infinite;
-          animation: gradient 15s ease infinite;
+  animation: gradient 15s ease infinite;
   padding: 10px;
   min-height: 100vh;
   line-height: 1.5;
@@ -83,7 +82,6 @@ body {
 .container > main > form > .button {
   margin-top: 1.2em;
   background: transparent;
-  -webkit-animation: jello-horizontal 0.9s both;
   animation: jello-horizontal 0.9s both;
   border: 1px solid rgba(239, 71, 110, 0.6862745098);
   outline: none;
@@ -95,31 +93,7 @@ body {
   background: #a61750;
   border: 2px solid #a61750;
   color: #ffffff;
-  -webkit-animation: squeeze3124 0.9s both;
-          animation: squeeze3124 0.9s both;
-}
-@-webkit-keyframes squeeze3124 {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
+  animation: squeeze3124 0.9s both;
 }
 @keyframes squeeze3124 {
   0% {
