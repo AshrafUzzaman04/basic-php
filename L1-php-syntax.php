@@ -3,25 +3,26 @@
 // variable
 
 $varName = "This is PHP";
-$var ="hellow";
-
+$var = "hellow";
 # function
 
-function myfunct($var , $var2 = "haha" ) {
- return "<h2>$var $var2 </h2>";
+function myfunct($var, $var2 = "haha")
+{
+    return "<h2>$var $var2 </h2>";
 }
 
 
 
-function myfunctTwo (){
-    return  $GLOBALS["var"] ;              // superGlobals variable $GLOBALS
+function myfunctTwo()
+{
+    return  $GLOBALS["var"];              // superGlobals variable $GLOBALS
 }
 /**
  * CALL THE 
  * FUNCTION
  */
 
-echo myfunct(var:$varName, var2: $var );
+echo myfunct(var: $varName, var2: $var);
 echo myfunctTwo();
 
 /**
@@ -69,5 +70,3 @@ echo myfunctTwo();
  * empty
  * mysqli_connect("localhost","root","","data_base");
  */
-
-?>
