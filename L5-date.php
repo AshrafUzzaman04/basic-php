@@ -48,9 +48,25 @@ echo "<hr>";
 // hour, minute, second, month, day, year
 $myBirthday = mktime(6, 1, 20, 8, 4, 2004);
 echo date("d/F/Y -l", $myBirthday) . "<br>" . "<hr>";
+
+
 $endDate = strtotime("+20 years", $myBirthday);
 echo "<h2 style='color: blue'>20 year week selection in my birthday</h2>";
 while ($myBirthday <= $endDate) {
     echo date("d/F/Y -l", $myBirthday) . "<br>";
     $myBirthday = strtotime("+1 year", $myBirthday);
 }
+
+
+
+// set the timezone to your desired timezone
+// date_default_timezone_set('aisa/dhaka');
+
+// set the birth date
+$birth_date = '2004-08-04';
+
+// calculate the age based on the birth date
+$age = date_diff(date_create($birth_date), date_create('today'))->y;
+
+// display the age
+echo "You are " . $age . " years old.";
