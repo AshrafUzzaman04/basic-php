@@ -1,5 +1,6 @@
 <?php
 include_once("./header.php");
+$pagename = basename($_SERVER['PHP_SELF']);
 
 if (isset($_POST['sub123'])) {
     $id =  $_GET['id'];
@@ -7,7 +8,7 @@ if (isset($_POST['sub123'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $gender = $_POST['gender'] ?? null;
-    $city = $_POST['city'];
+    $city = $_POST['city'] ?? null;
     $date_of_birth = $_POST['date_of_birth'];
 
     // user name 
@@ -81,8 +82,6 @@ if (isset($_GET['id'])) {
     } else {
         $pre_data = $get_pre_data->fetch_assoc();
 ?>
-
-
         <div class="container">
             <div class="row min-vh-100">
                 <div class="col-11 col-md-5 col-lg-4 m-auto border shadow-sm rounded px-2 px-md-4 pt-4">
@@ -187,27 +186,18 @@ if (isset($_GET['id'])) {
                         <!-- button  -->
 
                         <div class=" mb-4 mt-2">
-                            <input type="button" onclick="location.href='./read.php'" class="btn btn-dark" value="Back">
+                            <input type="button" onclick="history.back()" class="btn btn-dark" value="Back">
                             <input type="reset" name="sub123" class="btn btn-primary shadow-sm" value="Reset" onclick="location.href='edit.php?id=<?= $pre_data['id'] ?>'">
                             <input type="submit" name="sub123" class="btn btn-success shadow-sm" value="Update">
                         </div>
-
-
-
-
-
-
-
-
                     </form>
                 </div>
             </div>
         </div>
-
-
-
 <?php
     }
+} else {
+    header("location: javascript://history.go(-1)");
 }
 
 
