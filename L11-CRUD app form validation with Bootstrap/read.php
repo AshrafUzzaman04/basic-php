@@ -56,7 +56,7 @@ if ($read->num_rows >= 0 || $read) {
                 ?>
             </table>
             <div class="row p-0 m-0">
-                <button class="btn btn-success me-auto col-2 m-0" onclick="location.href='./form validation.php'">Added new
+                <button class="btn btn-success me-auto col-2 m-0" onclick="location.href='./'">Added new
                     account
                 </button>
             </div>

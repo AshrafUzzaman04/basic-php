@@ -1,78 +1,107 @@
 <?php
 include_once("./header.php");
 
-$connet =  mysqli_connect("localhost", "root", "", "data_base");
+
+$gndr = ["Male", "Female", "Others"];
+$cty =   ["Dhaka", "Rajsahi", "Khulna", "Barishal", "Shylet", "Cumilla", "Bagura", "Joypurhat", "Cox's Bazar", "Lalmonirhat", "Lalbag", "Narayanganj"];
+
+
+function sefuda($data)
+{
+    $data = htmlspecialchars($data);
+    $data = trim($data);
+    $data = stripslashes($data);
+    return  $data;
+}
 
 
 if (isset($_POST['sub123'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    //  $gender = $_POST['gender'];
-    $city = $_POST['city'];
-    $date_of_birth = $_POST['date_of_birth'];
+    $name = sefuda($_POST['name']);
+    $email = sefuda($_POST['email']);
+    $password = sefuda($_POST['password']);
+    $gender = sefuda($_POST['gender'] ?? null);
+    $city = sefuda($_POST['city'] ?? null);
+    $date_of_birth = sefuda($_POST['date_of_birth']);
 
     // user name 
     if (empty($name)) {
-        $errorName = "<span class='text-danger'>Enter your name.</span>";
+        $errorName = "<span class='text-danger'>Enter your name!</span>";
     }
     // elseif (!preg_match("/^[a-zA-Z ]*$/", $name)) {
-    //     $errorName = "<span class='text-danger'>Invalid Username.</span>";
+    //     $errorName = "<span class='text-danger'>Invalid Username!</span>";
     // } 
     else {
-        $correctName = $name;
+        $correctName = $connet->real_escape_string($name);
     }
 
     // email
     if (empty($email)) {
-        $errorEmail = "<span class='text-danger'>Enter your email address.</span>";
+        $errorEmail = "<span class='text-danger'>Enter your email address!</span>";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorEmail = "<span class='text-danger'>Invalid email address.</span>";
+        $errorEmail = "<span class='text-danger'>Invalid email address!</span>";
     } else {
-        $correctEmail = $email;
+        $search_existing_email = $connet->query("SELECT * FROM `user_data` WHERE `email` = '$email'");
+        if ($search_existing_email->num_rows > 0) {
+            $errorEmail = "<span class='text-danger'>Email address already exist!</span>";
+        } else {
+            $correctEmail = mysqli_real_escape_string($connet, $email);
+        }
     }
 
     // password
     if (empty($password)) {
-        $errorPassword = "<span class='text-danger'>Enter email password.</span>";
+        $errorPassword = "<span class='text-danger'>Enter email password!</span>";
     } elseif (!preg_match('/^(?=.*\d)(?=.*[a-z]).{8,}$/', $password)) {
-        $errorPassword = "<span class='text-danger'>Enter a strong password.</span>";
+        $errorPassword = "<span class='text-danger'>Enter a strong password!</span>";
     } else {
-        $correctPassword = $password;
+        $correctPassword = mysqli_real_escape_string($connet, $password);
+    }
+
+    // gender 
+    if (empty($gender)) {
+        $errorGender = "<span class='text-danger'>Checked your gender please!</span>";
+    } elseif (!in_array($gender, $gndr)) {
+        $errorGender = "<span class='text-danger'>Changing data from inspect is completely illegal!</span>";
+    } elseif (($gender !== 'Male') && ($gender !== 'Female') && ($gender !== 'Others')) {
+        $errorGender = "<span class='text-danger'>Changing data from inspect is completely illegal!</span>";
+    } else {
+        $correctGender = mysqli_real_escape_string($connet, $gender);
     }
 
     // city
     if (empty($city)) {
-        $errorCity = "<span class='text-danger'>Select your town.</span>";
+        $errorCity = "<span class='text-danger'>Select your town!</span>";
+    } elseif (!in_array($city, $cty)) {
+        $errorCity = "<span class='text-danger'>Changing data from inspect is completely illegal!</span>";
     } else {
-        $correctCity = $city;
-    }
-
-    // gender 
-    if (empty($_POST['gender'])) {
-        $errorGender = "<span class='text-danger'>Checked your gender please.</span>";
-    } else {
-        $correctGender = $_POST['gender'];
+        $correctCity = mysqli_real_escape_string($connet, $city);
     }
 
     // date_of_birth
     if (empty($date_of_birth)) {
-        $errordate_of_birth = "<span class='text-danger'>Enter your birthday.</span>";
+        $errordate_of_birth = "<span class='text-danger'>Enter your birthday!</span>";
     } else {
-        $correctdate_of_birth = $date_of_birth;
+        $correctdate_of_birth = mysqli_real_escape_string($connet, $date_of_birth);
     }
 
 
     if (!empty($correctName) && !empty($correctEmail)  && !empty($correctPassword) && !empty($correctGender) && !empty($correctCity) && !empty($correctdate_of_birth)) {
-        $insert_query = "INSERT INTO `user_data`( `name`, `email`, `password`, `gender`,`city`,`date_of_birth`) VALUES ('$name','$email','$password' ,'$_POST[gender]','$city','$date_of_birth')";
+        $insert_query = "INSERT INTO `user_data`( `name`, `email`, `password`, `gender`,`city`,`date_of_birth`) VALUES ('$correctName','$correctEmail','$correctPassword' ,'$correctGender','$correctCity','$correctdate_of_birth')";
         $insert = $connet->query($insert_query);
+
+        $correctName = $correctEmail = $correctPassword =  $correctGender = $correctCity = $correctdate_of_birth = null;
 
         if ($insert) {
             echo "<script>alert('Register Succsessully.');location.href='./read.php?'</script>";
+        } else {
+            echo
+            "<script>alert('Register Succsessully.'); 
+            location.href='</script>";
+            ($_SERVER['PHP_SELF']);
+            "<script>'</script>";
         }
     }
 }
-
 ?>
 
 <div class="container">
@@ -107,17 +136,17 @@ if (isset($_POST['sub123'])) {
                 <div class="mb-3">
                     <table>
                         <tr>
-                            <td><span>Gender : </span></td>
-                            <td><input type="radio" name="gender" id="male" value="Male" <?= (isset($correctGender) && $_POST['gender'] == "Male") ? "checked" : null ?>>
+                            <td><span>Gender : &nbsp</span></td>
+                            <td><input type="radio" name="gender" id="male" value="Male" <?= (isset($correctGender) && $gender == "Male") ? "checked" : null ?>>
                                 <label for="male">Male</label>
-                                <input type="radio" name="gender" id="female" value="Female" <?= (isset($correctGender) && $_POST['gender'] == "Female") ? "checked" : null ?>>
+                                <input type="radio" name="gender" id="female" value="Female" <?= (isset($correctGender) && $gender == "Female") ? "checked" : null ?>>
                                 <label for="female">Female</label>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="radio" name="gender" id="Others" value="Others" <?= (isset($correctGender) && $_POST['gender'] == "Others") ? "checked" : null ?>>
+                                <input type="radio" name="gender" id="Others" value="Others" <?= (isset($correctGender) && $gender == "Others") ? "checked" : null ?>>
                                 <label for="Others">Others</label>
                             </td>
                         </tr>
