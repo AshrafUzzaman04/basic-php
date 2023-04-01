@@ -1,5 +1,5 @@
 <?php
-include_once("./header.php");
+include_once("./include/header.php");
 
 // return the file name with extension
 // $pagename = basename($_SERVER['PHP_SELF']);
@@ -7,8 +7,8 @@ include_once("./header.php");
 // return remove file extension
 $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 ?>
-<div class="container-xl mt-2 mb-5">
-    <div class="row mx-3 mx-md-0">
+<div class="mt-2 mb-5 register_table">
+    <div class="row mx-auto mx-md-0">
         <div class="text-center text-primary my-2">
             <h2>Registered account</h2>
         </div>
@@ -22,9 +22,8 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                     <th scope="col" class="align-middle">Password</th>
                     <th scope="col" class="align-middle">Gender</th>
                     <th scope="col" class="align-middle">City</th>
-                    <th scope="col" class="align-middle">Date Of Birth</th>
-                    <th scope="col" class="align-middle">Action</th>
-                    <th scope="col" class="align-middle">Account Created</th>
+                    <th scope="col" class="align-middle">DOB</th>
+                    <th scope="col" class="align-middle">Action </th>
                 </tr>
             </thead>
             <?php
@@ -61,18 +60,16 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                             <td class="align-middle"><?= $data['password'] ?></td>
                             <td class="align-middle"><?= $data['gender'] ?></td>
                             <td class="align-middle"><?= $data['city'] ?></td>
-                            <td class="align-middle"><?= $data['date_of_birth'] ?></td>
-                            <td class="align-middle"><?= date('h:m:s || d/m/y', strtotime($data['reg_time']))  ?></td>
+                            <td class="align-middle"><?= date('d/m/y', strtotime($data['date_of_birth']))  ?></td>
                             <td class="align-middle">
-
-                                <div class=" d-inline ">
-                                    <a href="./edit.php?id=<?= $data['id'] ?>" style="text-decoration: none;">
-                                        <button class="btn btn-warning">Edit</button>
+                                <div class=" d-inline">
+                                    <a href="./edit?id=<?= $data['id'] ?>" style="text-decoration: none;">
+                                        <button class="btn btn-warning mb-2">Edit</button>
                                     </a>
                                 </div>
-                                <div class="d-inline ">
-                                    <a href="./dlt.php?id=<?= $data['id'] ?>" style="text-decoration: none;">
-                                        <button class="btn btn-danger">Delete</button>
+                                <div class="d-inline">
+                                    <a href="./dlt?id=<?= $data['id'] ?>" style="text-decoration: none;">
+                                        <button class="btn btn-danger mb-2">Delete</button>
                                     </a>
                                 </div>
                             </td>
@@ -101,8 +98,8 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                 </script>
             <?php } ?>
         </table>
-        <div class="p-0 m-0 col-12 d-flex justify-content-between align-items-center flex-column-reverse flex-md-row gap-3 gap-md-0">
-            <button class="btn btn-success m-0 inline-block" onclick="location.href='./'">Added new
+        <div class="p-0 m-0 my-4 d-flex justify-content-between align-items-md-center flex-column-reverse flex-md-row gap-3 gap-md-0 ">
+            <button class="btn btn-success m-0 inline-block" style="max-width: max-content;" onclick="location.href='./'">Added new
                 account
             </button>
             <nav aria-label="Page navigation example col-10 inline-block">
@@ -112,8 +109,9 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                     <li class="page-item <?= ($pageno == 1) ? "disabled" : null ?>"><a class="page-link" href="<?= "$pagename?page=" . ($pageno != 1 ? $pageno - 1 : 1) ?>">Previous</a></li>
 
                     <!-- total page -->
+
                     <?php
-                    if ($pageno > 3) {
+                    if ($totalPage > 3 && $pageno > 3) {
                     ?>
                         <li class="page-item <?= ($pageno == 1) ? "active" : null ?>"><a class="page-link" href="<?= "$pagename?page=1" ?>">1</a></li>
                         <li class="page-item page-link border-0">...</li>
@@ -122,15 +120,42 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                     }
                     ?>
                     <?php
-                    for ($i = 1; $i <= $totalPage; $i++) {
+                    $z = 4;
+                    if ($pageno <= 3) {
+                        $x = 1;
+                    } elseif ($pageno >= 4) {
+                        $x = $pageno - 1;
+                    } else {
+                        $x = $pageno;
+                    }
+                    if ($totalPage - 5 > 0 && $pageno > $totalPage - 5) {
+                        $x = $totalPage - 5;
+                        $z = 7;
+                    }
+
+                    $y = 1;
+
+                    for ($i = $x; $i <= $totalPage; $i++) {
+                        if ($y <= $z) {
                     ?>
-                        <?php
-                        if ($i <= 3) {
-                        ?>
                             <li class="page-item <?= ($pageno == $i) ? "active" : null ?>"><a class="page-link" href="<?= "$pagename?page=$i" ?>"><?= $i ?></a></li>
                     <?php
+                            $y++;
+                            $x++;
                         }
                     }
+                    ?>
+
+                    <?php
+                    if ($x - 1 < $totalPage) {
+                    ?>
+                        <li class="page-item page-link border-0">...</li>
+                        <li class="page-item <?= ($pageno == $totalPage) ? "active" : null ?>"><a class="page-link" href="<?= "$pagename?page=" . $totalPage ?>"><?= $totalPage ?></a></li>
+
+
+                    <?php
+                    }
+
                     ?>
 
                     <!-- next button paigination -->
@@ -144,5 +169,5 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 
 <!-- include footer -->
 <?php
-include_once("./footer.php");
+include_once("./include/footer.php");
 ?>

@@ -1,6 +1,5 @@
 <?php
-include_once("./header.php");
-$pagename = basename($_SERVER['PHP_SELF']);
+include_once("./include/header.php");
 
 if (isset($_POST['sub123'])) {
     $id =  $_GET['id'];
@@ -78,7 +77,7 @@ if (isset($_GET['id'])) {
     $get_pre_data = $connet->query($get_pre_data_query);
 
     if ($get_pre_data->num_rows != 1) {
-        echo "<span>No data found.</span>";
+        header("location: read");
     } else {
         $pre_data = $get_pre_data->fetch_assoc();
 ?>
@@ -197,10 +196,10 @@ if (isset($_GET['id'])) {
 <?php
     }
 } else {
-    header("location: read.php");
+    header("location: read");
 }
 
 
 ?> <?php
-    include_once("./footer.php");
+    include_once("./include/footer.php");
     ?>

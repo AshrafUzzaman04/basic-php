@@ -2,7 +2,7 @@
 
 
 <?php
-include_once("./header.php");
+include_once("./include/header.php");
 
 if (!isset($_GET['id'])) {
     header('location: read.php');
@@ -56,5 +56,5 @@ if (isset($_POST['dlt123'])) {
 
 
 <?php
-include_once("./footer.php");
+include_once("./include/footer.php");
 ?>

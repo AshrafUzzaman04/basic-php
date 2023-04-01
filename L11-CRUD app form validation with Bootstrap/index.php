@@ -1,5 +1,5 @@
 <?php
-include_once("./header.php");
+include_once("./include/header.php");
 
 
 $gndr = ["Male", "Female", "Others"];
@@ -115,7 +115,7 @@ if (isset($_POST['sub123'])) {
 
                 <!-- name -->
                 <div class="mb-3">
-                    <input type="text" name="name" placeholder="User Name" class="form-control <?= isset($errorName) ? "is-invalid" : null ?> <?= isset($correctName) ? "is-valid" : null ?>" value="<?= $correctName ?? null ?>">
+                    <input type="text" name="name" placeholder="Username*" class="form-control <?= isset($errorName) ? "is-invalid" : null ?> <?= isset($correctName) ? "is-valid" : null ?>" value="<?= $correctName ?? null ?>">
                     <?= $errorName ?? null ?>
                 </div>
 
@@ -200,5 +200,5 @@ if (isset($_POST['sub123'])) {
 
 
 <?php
-include_once("./footer.php");
+include_once("./include/footer.php");
 ?>

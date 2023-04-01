@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.register_table {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 20px;
+  > .row {
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    // Scrollbar Override
+    &::-webkit-scrollbar {
+      cursor: pointer;
+      width: 10px;
+    }
+    &::-webkit-scrollbar:horizontal {
+      cursor: pointer;
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      cursor: pointer;
+      background-color: transparentize(#ccc, 0.7);
+    }
+    &::-webkit-scrollbar-thumb {
+      cursor: pointer;
+      border-radius: 10px;
+      background: transparentize(#ccc, 0.2);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background: transparentize(#9c9c9c, 0.2);
+      }
+    }
+    > .table {
+      min-width: 1200px;
+      margin-bottom: 0;
+      max-width: none;
+    }
+  }
+}
