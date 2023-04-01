@@ -1,6 +1,11 @@
 <?php
 include_once("./header.php");
-$pagename = basename($_SERVER['PHP_SELF']);
+
+// return the file name with extension
+// $pagename = basename($_SERVER['PHP_SELF']);
+
+// return remove file extension
+$pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 ?>
 <div class="container-xl mt-2 mb-5">
     <div class="row mx-3 mx-md-0">
@@ -96,20 +101,39 @@ $pagename = basename($_SERVER['PHP_SELF']);
                 </script>
             <?php } ?>
         </table>
-        <div class="p-0 m-0 col-12 d-flex justify-content-between align-items-center">
-            <button class="btn btn-success col-2 m-0 inline-block" onclick="location.href='./'">Added new
+        <div class="p-0 m-0 col-12 d-flex justify-content-between align-items-center flex-column-reverse flex-md-row gap-3 gap-md-0">
+            <button class="btn btn-success m-0 inline-block" onclick="location.href='./'">Added new
                 account
             </button>
             <nav aria-label="Page navigation example col-10 inline-block">
                 <ul class="pagination my-0">
+
+                    <!-- previous page paigination -->
                     <li class="page-item <?= ($pageno == 1) ? "disabled" : null ?>"><a class="page-link" href="<?= "$pagename?page=" . ($pageno != 1 ? $pageno - 1 : 1) ?>">Previous</a></li>
+
+                    <!-- total page -->
                     <?php
-                    for ($i = 1; $i <=   $totalPage; $i++) {
+                    if ($pageno > 3) {
                     ?>
-                        <li class="page-item <?= ($pageno == $i) ? "active" : null ?>"><a class="page-link" href="<?= "$pagename?page=$i" ?>"><?= $i ?></a></li>
+                        <li class="page-item <?= ($pageno == 1) ? "active" : null ?>"><a class="page-link" href="<?= "$pagename?page=1" ?>">1</a></li>
+                        <li class="page-item page-link border-0">...</li>
+
                     <?php
                     }
                     ?>
+                    <?php
+                    for ($i = 1; $i <= $totalPage; $i++) {
+                    ?>
+                        <?php
+                        if ($i <= 3) {
+                        ?>
+                            <li class="page-item <?= ($pageno == $i) ? "active" : null ?>"><a class="page-link" href="<?= "$pagename?page=$i" ?>"><?= $i ?></a></li>
+                    <?php
+                        }
+                    }
+                    ?>
+
+                    <!-- next button paigination -->
                     <li class="page-item <?= ($pageno == $totalPage) ? "disabled" : null ?>"><a class="page-link" href="<?= "$pagename?page=" . ($pageno != $totalPage ? $pageno + 1  : $totalPage) ?>">Next</a></li>
                 </ul>
             </nav>

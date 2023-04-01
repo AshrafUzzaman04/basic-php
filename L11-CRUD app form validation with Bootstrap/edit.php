@@ -197,7 +197,7 @@ if (isset($_GET['id'])) {
 <?php
     }
 } else {
-    header("location: javascript://history.go(-1)");
+    header("location: read.php");
 }
 
 
