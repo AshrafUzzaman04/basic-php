@@ -20,6 +20,7 @@ $objHW =  new helloWorld("Hellow Brazil");
 
 //  <<<<<<<<<<<<<<<<<<<< (::) scope resolution operator in php >>>>>>>>>>>>>>>>>>>>>>>>
 
+// use this any where you want
 trait TraitName
 {
     protected static string $Uname;
