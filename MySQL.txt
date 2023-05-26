@@ -68,3 +68,16 @@ mysqli_connect("localhost","root","","file_name")
 
 DROP TABLE table_name;
 
+
+
+/* delete duplicate data from data table */
+DELETE t1 FROM `banners` t1
+INNER  JOIN `banners` t2
+WHERE
+    t1.`banner_id` < t2.`banner_id` AND
+    t1.`image_src` = t2.`image_src` AND
+    t1.`image_alt` = t2.`image_alt` AND
+    t1.`subtitle` = t2.`subtitle` AND
+    t1.`title` = t2.`title` AND
+    t1.`link` = t2.`link`
+
