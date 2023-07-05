@@ -81,3 +81,12 @@ WHERE
     t1.`title` = t2.`title` AND
     t1.`link` = t2.`link`
 
+/* if the child foreign key exist that delete query */
+DELETE FROM parent_table
+WHERE parent_id = 'your_parent_id'
+  AND NOT EXISTS (
+    SELECT 1
+    FROM child_table
+    WHERE foreign_key_column = 'your_parent_id'
+  );
+
