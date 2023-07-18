@@ -122,13 +122,13 @@ if (isset($_POST['sub123'])) {
 
                 <!-- email -->
                 <div class="mb-3">
-                    <input type="text" name="email" placeholder="Email*" class="form-control <?= isset($errorEmail) ? "is-invalid" : null ?> <?= isset($correctEmail) ? "is-valid" : null ?>" value="<?= $correctEmail ?? null ?>">
+                    <input type="text" name="email" placeholder="Email*" class="form-control <?= isset($errorEmail) ? "is-invalid" : null ?> <?= isset($correctEmail) ? "is-valid" : null ?>" value="<?= $email ?? null ?>">
                     <?= $errorEmail ?? null ?>
                 </div>
 
                 <!-- password -->
                 <div class="mb-3">
-                    <input type="password" name="password" placeholder="Password*" class="form-control <?= isset($errorPassword) ? "is-invalid" : null ?> <?= isset($correctPassword) ? "is-valid" : null ?>" value="<?= $correctPassword ?? null ?>">
+                    <input type="password" name="password" placeholder="Password*" class="form-control <?= isset($errorPassword) ? "is-invalid" : null ?> <?= isset($correctPassword) ? "is-valid" : null ?>" value="<?= $password ?? null ?>">
                     <?= $errorPassword ?? null ?>
                 </div>
 
@@ -136,7 +136,7 @@ if (isset($_POST['sub123'])) {
                 <div class="mb-3">
                     <table>
                         <tr>
-                            <td><span>Gender : &nbsp</span></td>
+                            <td><span>Gender : &nbsp&nbsp</span></td>
                             <td><input type="radio" name="gender" id="male" value="Male" <?= (isset($correctGender) && $gender == "Male") ? "checked" : null ?>>
                                 <label for="male">Male</label>
                                 <input type="radio" name="gender" id="female" value="Female" <?= (isset($correctGender) && $gender == "Female") ? "checked" : null ?>>

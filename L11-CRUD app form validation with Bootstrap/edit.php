@@ -96,7 +96,7 @@ if (isset($_GET['id'])) {
                                 <span class="text-success">Name :</span>
                             </label>
                             <input type="text" name="name" id="name" class="form-control <?= isset($errorName) ? "is-invalid" : null ?>
-                    <?= isset($correctName) ? "is-valid" : null ?>" value="<?= $pre_data['name'] ?? $correctName || $name ??   null ?> ">
+                    <?= isset($correctName) ? "is-valid" : null ?>" value="<?= $name ?? $pre_data['name'] ??   null ?> ">
                             <?= $errorName ?? null ?>
                         </div>
 
@@ -105,7 +105,7 @@ if (isset($_GET['id'])) {
                             <label for="email">
                                 <span class="text-success">Email :</span>
                             </label>
-                            <input type="text" name="email" id="email" class="form-control <?= isset($errorEmail) ? "is-invalid" : null ?> <?= isset($correctEmail) ? "is-valid" : null ?>" value="<?= $pre_data['email'] ?? $correctEmail || $email ?? null ?>">
+                            <input type="text" name="email" id="email" class="form-control <?= isset($errorEmail) ? "is-invalid" : null ?> <?= isset($correctEmail) ? "is-valid" : null ?>" value="<?= $email ?? $pre_data['email'] ?? null ?>">
                             <?= $errorEmail ?? null ?>
                         </div>
 
@@ -114,7 +114,7 @@ if (isset($_GET['id'])) {
                             <label for="password">
                                 <span class="text-success">Password :</span>
                             </label>
-                            <input type="text" name="password" id="password" class="form-control <?= isset($errorPassword) ? "is-invalid" : null ?> <?= isset($correctPassword) ? "is-valid" : null ?>" value="<?= $pre_data['password'] ?? $correctPassword ?? null ?>">
+                            <input type="text" name="password" id="password" class="form-control <?= isset($errorPassword) ? "is-invalid" : null ?> <?= isset($correctPassword) ? "is-valid" : null ?>" value="<?= $password ?? $pre_data['password'] ??  null ?>">
                             <?= $errorPassword ?? null ?>
                         </div>
 
@@ -123,7 +123,7 @@ if (isset($_GET['id'])) {
                             <table>
                                 <tr>
                                     <td>
-                                        <span class="d-block text-success"> Gender :</span>
+                                        <span class="d-block text-success"> Gender :&nbsp&nbsp</span>
                                     </td>
                                     <td>
                                         <input type="radio" name="gender" id="male" value="Male" <?= (!isset($gender)) && $pre_data['gender'] == "Male" ? "checked" : null ?> <?= (isset($gender)) && $correctGender == "Male" ? "checked" : null ?>>
@@ -152,9 +152,7 @@ if (isset($_GET['id'])) {
                         <?= (isset($errorCity)) ? "is-invalid" : null ?>
                         <?= (isset($correctCity)) ? "is-valid" : null ?>
                         ">
-                                    <option value="<?= $pre_data['city'] ?? null ?>"><?= (!isset($city)) ? $pre_data['city'] : "--
-                                Select
-                                Area --" ?>
+                                    <option value="<?= $city ?? $pre_data['city'] ?? null ?>"><?= (!isset($city)) ? $pre_data['city'] : $city ?>
                                     </option>
                                     <option value=" Dhaka">Dhaka
                                     </option>

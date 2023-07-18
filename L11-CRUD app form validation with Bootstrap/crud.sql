@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2022 at 01:22 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jul 18, 2023 at 09:41 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `data_base`
+-- Database: `crud`
 --
 
 -- --------------------------------------------------------
@@ -36,18 +36,14 @@ CREATE TABLE `user_data` (
   `date_of_birth` date DEFAULT NULL,
   `city` char(100) DEFAULT NULL,
   `gender` char(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_data`
 --
 
 INSERT INTO `user_data` (`id`, `name`, `email`, `password`, `reg_time`, `date_of_birth`, `city`, `gender`) VALUES
-(38, 'Kamrul Islam', 'kamrul.islam@gmail.com', 'Kamrul123///', '2022-10-27 20:55:14', '1995-08-06', 'Cumilla', 'Male'),
-(39, 'Abdullah Al Ahad Bhuiya', 'abdullah@gamil.com', 'Abdullah123///456', '2022-10-27 20:56:32', '2002-07-05', 'Dhaka', 'Male'),
-(40, 'Ashraf Uz Mahim', 'ashraf.uzzaman@gmail.com', 'Ashraf123???ashraf', '2022-10-28 07:58:27', '2004-08-04', ' Dhaka', 'Male'),
-(41, 'Hujur', 'hujur@gmail.com', 'Hujur7894561323', '2022-10-28 09:52:53', '1955-05-05', 'Narayanganj', 'Male'),
-(42, 'Jannat', 'jannat@gmail.com', 'Jannat25896314', '2022-10-28 09:58:01', '2005-08-08', 'Khulna', 'Female');
+(1, 'Webcoder Ashraf', 'ashraf.uzzaman04082004@gmail.com', 'Hellow5448', '2023-07-18 19:30:25', '2023-07-03', ' Dhaka', 'Male');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +63,7 @@ ALTER TABLE `user_data`
 -- AUTO_INCREMENT for table `user_data`
 --
 ALTER TABLE `user_data`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

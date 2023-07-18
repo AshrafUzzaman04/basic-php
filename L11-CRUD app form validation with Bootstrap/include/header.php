@@ -1,4 +1,5 @@
 <?php
+// $connet =  mysqli_connect("localhost", "proyojonershathi_coderashraf", "coderashraf2023", "proyojonershathi_crud");
 $connet =  mysqli_connect("localhost", "root", "", "crud");
 ?>
 <!doctype html>
