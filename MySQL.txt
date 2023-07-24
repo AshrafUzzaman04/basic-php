@@ -81,6 +81,7 @@ WHERE
     t1.`title` = t2.`title` AND
     t1.`link` = t2.`link`
 
+
 /* if the child foreign key exist that delete query */
 DELETE FROM parent_table
 WHERE parent_id = 'your_parent_id'
@@ -90,3 +91,8 @@ WHERE parent_id = 'your_parent_id'
     WHERE foreign_key_column = 'your_parent_id'
   );
 
+
+/* if i need to reset my database table id */
+SET @num := 0;
+UPDATE your_table SET id = @num := (@num+1);
+ALTER TABLE your_table AUTO_INCREMENT =1;
