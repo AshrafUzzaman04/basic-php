@@ -6,7 +6,7 @@ class userData
   public string $userEmail = "ashraf.uzzaman04082004@gmail.com";
 
   protected string $userName2 = "Tanha";
-  protected string $userEmail2 = "tanha09@gmail.com";
+  protected string $userEmail2 = "tanha@gmail.com";
 
   public int $userPhone;
   public string $userFather;
